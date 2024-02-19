@@ -28,6 +28,9 @@ This script simplifies the process of generating an SSH key, updating the SSH co
 
 6. The script will generate an SSH key, update the SSH config, display the public key, and add the private key to the SSH agent.
 
+7. Finally, copy the public key and configure in GitHub / GitLab
+   
+
 ## Script Details
 
 - The generated SSH key will be saved as `~/.ssh/id_rsa_<email_sanitized>`.
