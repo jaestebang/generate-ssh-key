@@ -48,6 +48,11 @@ echo -e "Host $domain\n  HostName $domain\n  User git\n  IdentityFile $keyfile" 
 # Add the private key to SSH agent
 ssh-add "$keyfile"
 
+# Update shell profile to start SSH agent and add the private key
+if [ -z "$SSH_AGENT_PID" ]; then
+  echo -e "\n# Start the SSH agent and add the private key\nif [ -z \"\$SSH_AGENT_PID\" ]; then\neval \"\$(ssh-agent -s)\"\nssh-add $keyfile\nfi" >> ~/.bash_profile
+fi
+
 echo "SSH setup for $email and $domain completed:"
 
 # Display and copy the public key
